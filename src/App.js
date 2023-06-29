@@ -1,26 +1,19 @@
-import React, { useState } from "react";
-import Child from "./Child";
-import Loading from "./Loading";
-import FetchApi from "./FetchApi";
-import SendPost from "./components/SendPost";
+import React from "react";
+import Data from "./components/Data";
+import Counter from "./components/Counter";
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import CounterNumber from "./CounterNumber";
+import Users from "./components/Users";
 
 function App() {
 
-  const [number, setNumber] = useState(0);
-
-  const clickHandler = () => {
-
-    setNumber(prevState => prevState + 1);
-
-  }
 
   return (
-    <div>
-      <SendPost />
-      <Child clickHandler={clickHandler} number={number} />
-      <Loading clickHandler={clickHandler} number={number} />
-      <FetchApi />
-    </div>
+    <Provider store={store}>
+      <CounterNumber />
+      <Users />
+    </Provider>
   );
 }
 
